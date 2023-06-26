@@ -1,10 +1,11 @@
-import React from 'react';
-import '../scss/ListedItems.scss'
+import './ListedItems.scss';
 
+export const ListedItems = ({items}) => {
 
-const ListedItems = ({ items }) => {
+  console.log(items);
+
   return (
-    <div>
+    <div className='container'>
       {items.map((item, index) => (
         <div key={index} className="card">
           <h3>{item.name}</h3>
@@ -15,5 +16,3 @@ const ListedItems = ({ items }) => {
     </div>
   );
 };
-
-export default ListedItems;

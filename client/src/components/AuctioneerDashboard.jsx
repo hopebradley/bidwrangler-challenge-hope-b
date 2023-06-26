@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-dom';
+import './AuctioneerDashboard.scss';
 import React, { useState } from 'react';
 import api from '../axios/axiosConfig';
+import { ListedItems } from './ListedItems';
 
-export const AuctioneerDashboard = () => {
+export const AuctioneerDashboard = ({items}) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
 
@@ -33,29 +35,32 @@ export const AuctioneerDashboard = () => {
   };
 
   return (
-    <div>
+    <>
       <h2>{displayName}'s Auctioneer Dashboard</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={handleNameChange}
-          required
-        />
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <h2>List A New Item</h2>
+          <label>Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={handleNameChange}
+            required
+          />
 
-        <label htmlFor="price">Price:</label>
-        <input
-          type="number"
-          id="price"
-          value={price}
-          onChange={handlePriceChange}
-          required
-        />
-        <button type="submit">List Item for Auction</button>
-
-      </form>
-    </div>
+          <label>Price:</label>
+          <input
+            type="number"
+            id="price"
+            value={price}
+            onChange={handlePriceChange}
+            required
+          />
+          <button type="submit">List Item for Auction</button>
+        </form>
+      </div>
+      <ListedItems items={items}/>
+    </>
   );
 };
