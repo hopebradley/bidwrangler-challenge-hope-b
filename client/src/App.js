@@ -1,17 +1,15 @@
 import './App.css';
-import { LoginPage } from './components/LoginPage.tsx';
-import { AuctioneerDashboard } from './components/AuctioneerDashboard.tsx';
-import { BidderDashboard } from './components/BidderDashboard.tsx';
+import { AuctioneerDashboard } from './components/AuctioneerDashboard';
+import { BidderDashboard } from './components/BidderDashboard';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <LoginPage />
       <BrowserRouter>
         <Routes>
-          <Route path="/auctioneer" element={<AuctioneerDashboard />} />
-          <Route path="/bidder" element={<BidderDashboard />} />
+          <Route path="/auctioneer/:name" element={<AuctioneerDashboard />} />
+          <Route path="/bidder/:name" element={<BidderDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
