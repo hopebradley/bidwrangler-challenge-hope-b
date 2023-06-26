@@ -2,8 +2,6 @@ import './ListedItems.scss';
 
 export const ListedItems = ({items}) => {
 
-  console.log(items);
-
   return (
     <div className='container'>
       {items.map((item, index) => (

@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # headers['Access-Control-Allow-Origin'] = '*'
     @item = Item.create(item_params)
     render json: @item
   end

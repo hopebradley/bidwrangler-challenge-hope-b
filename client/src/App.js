@@ -6,27 +6,27 @@ import { BidderDashboard } from './components/BidderDashboard';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
+
   const [items, setItems] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/items');
+  const loadItems = async () => {
+    axios.get('http://localhost:5000/items')
+    .then(response => {
         setItems(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+        console.log(items)
+    });
+  };
 
-    fetchData();
-  }, [items]);
+  useEffect(() => {
+    loadItems();
+  }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/auctioneer/:name" element={<AuctioneerDashboard items={items.toReversed()}/>} />
-          <Route path="/bidder/:name" element={<BidderDashboard items={items.toReversed()} />} />
+          <Route path="/auctioneer/:name" element={<AuctioneerDashboard items={items.toReversed()} loadItems={loadItems}/>} />
+          <Route path="/bidder/:name" element={<BidderDashboard items={items.toReversed()} />} loadItems={loadItems} />
         </Routes>
       </BrowserRouter>
     </div>

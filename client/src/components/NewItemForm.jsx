@@ -15,8 +15,6 @@ const NewItemForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Name: ${name}`);
-    console.log(`Price: ${price}`);
     axios.post('http://localhost:5000/items', {
       item: {
         name: name,

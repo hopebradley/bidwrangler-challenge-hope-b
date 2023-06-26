@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import api from '../axios/axiosConfig';
 import { ListedItems } from './ListedItems';
 
-export const AuctioneerDashboard = ({items}) => {
+export const AuctioneerDashboard = ({items, loadItems}) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
 
@@ -32,6 +32,7 @@ export const AuctioneerDashboard = ({items}) => {
     });
     setName('');
     setPrice('');
+    loadItems();
   };
 
   return (
