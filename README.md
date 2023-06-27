@@ -1,5 +1,11 @@
 ## Code challenge for BidWrangler!
 
+### VIDEO DEMO FOR QUICK VIEW:
+### https://www.youtube.com/watch?v=FGr6Zk1dfBM
+(sorry it starts so abruptly, it cut off my introduction).
+
+## App
+
 This is an auction app that allows auctioneers to list items and bidders to bid on them.
 
 To get started, go into the client directory and run 
