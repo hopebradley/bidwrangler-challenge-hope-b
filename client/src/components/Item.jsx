@@ -35,8 +35,8 @@ export const Item = ({ item, displayName, role }) => {
     });
   };
 
-  const biddingLocked = role==="auctioneer" || item.lastBidder === `${displayName}`
-  const buttonText = biddingLocked ? "You are not a bidder!" : "Place Bid"
+  const biddingLocked = item.last_bidder === `${displayName}`;
+  const buttonText = biddingLocked ? "Good luck!" : "Place Bid"
 
 
   return (
@@ -45,14 +45,17 @@ export const Item = ({ item, displayName, role }) => {
       <p>Starting Price: {item.starting_price}</p>
       <p>Lister: {item.lister}</p>
       <form onSubmit={handleBidSubmit}>
-        <input
-          type="number"
-          placeholder="Enter Bid Amount"
-          value={bidAmount}
-          onChange={handleBidChange}
-          required
-        />
-        <button disabled={biddingLocked}type="submit">{buttonText}</button>
+        {role === 'bidder' && 
+        <div>
+          <input
+            type="number"
+            placeholder="Enter Bid Amount"
+            value={bidAmount}
+            onChange={handleBidChange}
+            required
+          />
+          <button disabled={biddingLocked}type="submit">{buttonText}</button>
+        </div>}
         {error && <p style={{color: 'red'}}>{error}</p>}
         <h2>Current bid: {item.current_price} - {item.last_bidder} </h2>
       </form>
