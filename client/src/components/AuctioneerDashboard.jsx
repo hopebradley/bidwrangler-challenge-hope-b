@@ -1,12 +1,19 @@
 import { useParams } from 'react-router-dom';
 import './AuctioneerDashboard.scss';
-import React, { useState } from 'react';
-import api from '../axios/axiosConfig';
+import React, { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
 import { ListedItems } from './ListedItems';
+import { ItemsContext } from './ItemContext';
 
-export const AuctioneerDashboard = ({items, loadItems}) => {
+export const AuctioneerDashboard = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
+
+  const { items, setItems, loadItems } = useContext(ItemsContext);
+
+  useEffect(() => {
+    loadItems();
+  }, [loadItems]);
 
   const params = useParams();
 
@@ -23,16 +30,20 @@ export const AuctioneerDashboard = ({items, loadItems}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    api.post('http://localhost:5000/items', {
+    const item = axios.post('http://localhost:5000/items', {
       item: {
         lister: displayName,
         name: name,
-        price: price,
+        starting_price: price,
+        current_price: price,
+        last_bidder: 'Starting Price',
       },
+    })
+    .then(() => {
+      setItems([item, ...items]);
+      setName('');
+      setPrice('');
     });
-    setName('');
-    setPrice('');
-    loadItems();
   };
 
   return (
@@ -61,7 +72,7 @@ export const AuctioneerDashboard = ({items, loadItems}) => {
           <button type="submit">List Item for Auction</button>
         </form>
       </div>
-      <ListedItems items={items}/>
+      <ListedItems displayName={displayName} items={items} role={'auctioneer'}/>
     </>
   );
 };
