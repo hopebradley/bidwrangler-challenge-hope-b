@@ -16,8 +16,11 @@ to get the rails server up and running! the port is important, if it's not runni
 
 ## Once you're in
 
-To enter in as an auctioneer, navigate to localhost:3000/auctioneer/YourName
-To enter in as a bidder, navigate to localhost:3000/bidder/YourName
+To enter in as an auctioneer, navigate to 
+```localhost:3000/auctioneer/YourName```
+
+To enter in as a bidder, navigate to 
+```localhost:3000/bidder/YourName```
 
 Have a ball!
 
