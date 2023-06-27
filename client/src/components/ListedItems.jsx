@@ -1,16 +1,15 @@
-import './ListedItems.scss';
+import './Items.scss';
+import { Item } from './Item';
+import React from 'react';
 
-export const ListedItems = ({items}) => {
+
+export const ListedItems = ({ items, displayName, role }) => {
 
   return (
-    <div className='container'>
-      {items.map((item, index) => (
-        <div key={index} className="card">
-          <h3>{item.name}</h3>
-          <p>Price: {item.price}</p>
-          <p>Lister: {item.lister}</p>
-        </div>
-      ))}
+    <div className="container">
+      {items.length > 0 ? 
+      items?.map((item) => (<Item key={item.id} displayName={displayName} item={item} role={role}/>))
+      : <h2>No items listed</h2>}
     </div>
   );
 };
