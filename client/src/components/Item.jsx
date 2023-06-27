@@ -28,6 +28,7 @@ export const Item = ({ item, displayName, role }) => {
     })
     .catch(() => {
       setError("Your bid must be higher than the current price!");
+      setBidAmount('');
       setTimeout(() => {
         setError(false);;
       }, "2000");
