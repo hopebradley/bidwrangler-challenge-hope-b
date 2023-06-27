@@ -1,7 +1,7 @@
 ## Code challenge for BidWrangler!
 
 ### VIDEO DEMO FOR QUICK VIEW:
-### https://www.youtube.com/watch?v=FGr6Zk1dfBM
+### https://youtu.be/9cGHcQUsoLQ
 (sorry it starts so abruptly, it cut off my introduction).
 
 ## App
