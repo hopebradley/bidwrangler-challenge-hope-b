@@ -2,7 +2,6 @@
 
 ### VIDEO DEMO FOR QUICK VIEW:
 ### https://youtu.be/9cGHcQUsoLQ
-(sorry it starts so abruptly, it cut off my introduction).
 
 ## App
 
